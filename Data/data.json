@@ -1,0 +1,40 @@
+{
+  "Port": [
+    {
+      "ID": 1,
+      "Name": "Порт",
+      "Address": "Кронверский пр. 49",
+      "Work": true,
+        "Time": "пн-сб 8-21",
+      "Docks": [
+        {
+          "ID": 1,
+          "Name": "Причал",
+          "WorkNorm": 45.3,
+          "WorkTime": "пн-пт 10-20",
+          "Type": "Cargo",
+          "Ships": [
+            {
+              "ID": 1,
+              "Name": "Корабль",
+              "Type": "Cargo",
+              "Characteristic": "Science",
+              "Time": "четверг 13:00"
+            }
+          ]
+        }
+      ],
+      "Workers": [
+        {
+          "FIO": "Малышев А.А.",
+          "Role": "Главный",
+          "ID": 1,
+          "Salary": 120000
+        }
+      ]
+    }
+  ]
+}
+
+
+

@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "Name": "Малышев А.А.",
+      "Login": "BigBoy13",
+      "Password": "qwerty123",
+      "ID": 1,
+      "Function": "Admin"
+    }
+  ]
+}
+
+
+
