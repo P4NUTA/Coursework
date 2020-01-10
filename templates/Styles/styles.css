@@ -1,8 +1,11 @@
 body{
-    font-family: "Times New Roman", sans-serif;
+    font-family: "Times New Roman";
 
-    background: coral;
+    background: white;
     color: black;
+}
+article{
+    font-family: "Times New Roman";
 }
 div {
     font-family: Arial, sans-serif;

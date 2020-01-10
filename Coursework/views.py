@@ -4,11 +4,13 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from Coursework.forms import Nameform
+from .forms import LoginForm
 
 
 def index(request):
-    return render(request, 'login.html', {})
+    login = LoginForm()
+    # login = LoginForm(request.POST)
+    return render(request, 'index.html', {'form': login})
 
 
 def indexhttp(request):
@@ -17,7 +19,6 @@ def indexhttp(request):
 
 def error404(request):
     return Http404("123")
-
 
 # def get_name(request):
 #     if request.method == 'POST':
@@ -33,3 +34,4 @@ def error404(request):
 # Reading data.json
 with open("Data/data.json", 'rb') as read_file_json:
     data = json.load(read_file_json)
+
