@@ -6,6 +6,20 @@
       "Password": "qwerty123",
       "ID": 1,
       "Function": "Admin"
+    },
+    {
+      "Name": "Анисимова К.А.",
+      "Login": "SureLady",
+      "Password": "Sherlock",
+      "ID": 2,
+      "Function": "Moderator"
+    },
+    {
+      "Name": "Ефимов П.Л.",
+      "Login": "Ponchik",
+      "Password": "tasty",
+      "ID": 3,
+      "Function": "User"
     }
   ]
 }
