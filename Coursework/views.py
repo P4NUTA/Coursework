@@ -22,17 +22,21 @@ def index(request):
         checkPass = req.get("password")
         checkFunc = "none"
         for i in users["users"]:
+            if ('in' is request):
+                break
             if i["Login"] == checkLogin and i["Password"] == checkPass:
                 checkFunc = i["Function"]
-            if checkFunc == "Admin":
-                return redirect("/admin")
+                request.session.set_expiry(15)
+                request.session['in'] = True
+                request.session['login'] = i['login']
+                request.session['Function'] = i['Function']
                 break
-            elif checkFunc == "Moderator":
-                return redirect("/moderator")
-                break
-            elif checkFunc == "user":
-                return redirect("/user")
-                break
+        if request.session['Function'] == "Admin":
+            return redirect("/admin")
+        elif request.session['Function'] == "Moderator":
+            return redirect("/moderator")
+        elif request.session['Function'] == "user":
+            return redirect("/user")
     return render(request, 'index.html', {'form': loginform})
 
 

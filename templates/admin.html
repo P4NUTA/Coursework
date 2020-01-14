@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Администратор</title>
 </head>
 <body>
-
+<h1>{{ request.session.login }}</h1>
+{% if "in" in request.session %}
+    <h1>{{ request.session.login }}</h1>
+{% endif %}
 </body>
 </html>
