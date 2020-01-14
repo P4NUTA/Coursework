@@ -10,7 +10,7 @@
 <h1> Авторизация: </h1>
 </header>
 <body>
- <form action="" method="GET">
+ <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <br><input type="submit" value="Войти"/></br>

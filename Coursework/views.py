@@ -22,8 +22,6 @@ def index(request):
         checkPass = req.get("password")
         checkFunc = "none"
         for i in users["users"]:
-            if ('in' is request):
-                break
             if i["Login"] == checkLogin and i["Password"] == checkPass:
                 checkFunc = i["Function"]
                 request.session.set_expiry(15)
