@@ -12,11 +12,11 @@ from .forms import LoginForm
 def index(request):
     loginform = LoginForm()
     page = 'index.html'
-    if request.GET:
+    if request.POST:
+        # Проверка входа в систему
         with open("Data/users.json", 'rb') as read_file_json:
             users = json.load(read_file_json)
-        req = request.GET
-        # Проверка входа в систему
+        req = request.POST
         checkLogin = req.get("username")
         checkPass = req.get("password")
         checkFunc = "none"
@@ -51,9 +51,3 @@ def error404(request):
 #         form = Nameform()
 #
 #     return render(request, 'name.html', {'form': form})
-
-
-# Reading data.json
-with open("Data/data.json", 'rb') as read_file_json:
-    data = json.load(read_file_json)
-
