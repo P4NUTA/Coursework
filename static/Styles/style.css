@@ -1,5 +1,5 @@
 body {
-	background-color: #2e2b38;
+	background-color: #2d2d3d;
 	text-align: center;
 }
 header {
@@ -16,7 +16,7 @@ input {
 	padding: 6px 0px 6px 6px;
 	border-style: ridge;
 	border-color:  #e97e0a;
-	background-color: #2e2b38;
+	background-color: #2d2d3d;
 	color: #e97e0a;
 	width: 120px;
 	height: 36px;
@@ -25,10 +25,10 @@ input {
 }
 input:hover{
 	background-color: #e97e0a;
-	color: #2e2b38;
+	color: #2d2d3d;
 }
 input[type="submit"]:active{
-	background-color: #2e2b38;
+	background-color: #2d2d3d;
 	color: #e97e0a;
 }
 label{
