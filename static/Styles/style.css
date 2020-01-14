@@ -13,12 +13,12 @@ h1 {
 	letter-spacing: 0.05em;
 }
 input {
-	padding: 6px 40px 6px 12px;
+	padding: 6px 12px 6px 12px;
 	border-style: ridge;
 	border-color:  #e97e0a;
 	background-color: #2e2b38;
 	color: #e97e0a;
-	width: 90px;
+	width: 120px;
 	height: 36px;
 	font-size: 20px;
 	text-align: center;
