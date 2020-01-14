@@ -2,16 +2,17 @@ import json
 
 from django.http import Http404
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import LoginForm
 
 
+# Обработка главной страницы
 @csrf_exempt
 def index(request):
     loginform = LoginForm()
-    page = 'index.html'
     if request.POST:
         # Проверка входа в систему
         with open("Data/users.json", 'rb') as read_file_json:
@@ -24,15 +25,30 @@ def index(request):
             if i["Login"] == checkLogin and i["Password"] == checkPass:
                 checkFunc = i["Function"]
             if checkFunc == "Admin":
-                page = "admin.html"
+                return redirect("/admin")
                 break
             elif checkFunc == "Moderator":
-                page = "moderator.html"
+                return redirect("/moderator")
                 break
             elif checkFunc == "user":
-                page = "user.html"
+                return redirect("/user")
                 break
-    return render(request, page, {'form': loginform})
+    return render(request, 'index.html', {'form': loginform})
+
+
+# Обработка страницы админа
+def adminrender(request):
+    return render(request, "admin.html")
+
+
+# Обработка страницы модератора
+def moderatorrender(request):
+    return render(request, "moderator.html")
+
+
+# Обработка страницы пользователя
+def userrender(request):
+    return render(request, "user.html")
 
 
 def indexhttp(request):

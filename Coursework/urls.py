@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
     re_path('^404', views.error404),
+    path('user', views.userrender),
+    path('moderator', views.moderatorrender),
+    path('admin', views.adminrender),
 ]
