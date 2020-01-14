@@ -1,0 +1,37 @@
+body {
+	background-color: #2e2b38;
+	text-align: center;
+}
+header {
+	font-family: impact;
+	color: #e97e0a;
+	text-align: center;
+	background: opacity;
+}
+h1 {
+	font-size: 48px;
+	letter-spacing: 0.05em;
+}
+input {
+	padding: 6px 12px 6px 12px;
+	border-style: ridge;
+	border-color:  #e97e0a;
+	background-color: #2e2b38;
+	color: #e97e0a;
+	width: 90px;
+	height: 36px;
+	font-size: 20px;
+}
+input:hover{
+	background-color: #e97e0a;
+	color: #2e2b38;
+}
+input[type="submit"]:active{
+	background-color: #2e2b38;
+	color: #e97e0a;
+}
+label{
+	font-family: impact;
+	color: #e97e0a;
+	letter-spacing: 0.05em;
+}

@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ru" xmlns="http://www.w3.org/1999/html">
-<link rel="stylesheet" type="text/css" href="{% static "Styles/styles.css" %}">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} Вход {% endblock %}</title>
+<title>
+Авторизация
+</title>
 </head>
+<link href="../static/Styles/style.css" type="text/css" rel="stylesheet">
+<header>
+<img src="../static/porthub.png">
+<h1> Авторизация: </h1>
+</header>
 <body>
-<center>
-    <header><h1>Вход</h1></header>
-    <form action="" method="POST">
+ <form action="" method="GET">
         {% csrf_token %}
         {{ form.as_p }}
         <br><input type="submit" value="Войти"/></br>
     </form>
-</center>
 </body>
 </html>
