@@ -25,6 +25,11 @@ def index(request):
         checkLogin = req.get("username")
         checkPass = req.get("password")
         checkFunc = "none"
+
+        global Loginglobal
+        global Passglobal
+        global Funcglobal
+        global Nameglobal
         for i in users["users"]:
             if i["Login"] == checkLogin and i["Password"] == checkPass:
                 checkFunc = i["Function"]
@@ -37,17 +42,19 @@ def index(request):
                 # request.session['login'] = i['login']
                 # request.session['Function'] = i['Function']
                 break
-        if request.session['Function'] == "Admin":
+        if checkFunc == "Admin":
             return redirect("/admin")
-        elif request.session['Function'] == "Moderator":
+        elif checkFunc == "Moderator":
             return redirect("/moderator")
-        elif request.session['Function'] == "user":
+        elif checkFunc == "user":
             return redirect("/user")
     return render(request, 'index.html', {'form': loginform})
 
 
 # Обработка страницы админа
 def adminrender(request):
+    if Loginglobal == "none":
+        return redirect("/")
     with open("Data/data.json", 'rb') as read_file_json:
         data = json.load(read_file_json)
         Port = data["Port"]
@@ -72,13 +79,3 @@ def indexhttp(request):
 
 def error404(request):
     return Http404("123")
-
-# def get_name(request):
-#     if request.method == 'POST':
-#         form = Nameform(request.POST)
-#         if form.is_valid():
-#             return HttpResponse('/thanks/')
-#     else:
-#         form = Nameform()
-#
-#     return render(request, 'name.html', {'form': form})
