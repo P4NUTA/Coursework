@@ -77,7 +77,7 @@ def adminrender(request):
     if Loginglobal == "none":
         return redirect("/")
     # Обработка страницы
-    return render(request, "admin.html")
+    return render(request, "menu_admin.html")
 
 
 # Обработка страницы модератора
