@@ -16,13 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
+
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
     re_path('^404', views.error404),
-    path('user', views.userrender),
-    path('moderator', views.moderatorrender),
-    path('admin', views.adminrender),
+    path(r'user', views.userrender),
+    path(r'moderator', views.moderatorrender),
+    path(r'admin', views.adminrender),
+    path(r'moderatorlist', views.moderatorlist),
+    path(r'userlist', views.userlist),
+    re_path(r'^portlist/(?P<dock>\w+)/(?P<port>)/$', views.shiplist),
+    re_path(r'^portlist/(?P<dock>\w+)/$', views.docklist),
+    path(r'portlist/<str:id>', views.portlist),
+    path(r'portlist', views.portlist),
 ]
