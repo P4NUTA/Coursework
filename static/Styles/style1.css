@@ -1,6 +1,7 @@
 body {
 	background-color: #2d2d3d;
 	text-align: center;
+	margin:0px;
 }
 header {
 	display: flex; 
