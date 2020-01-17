@@ -28,8 +28,10 @@ urlpatterns = [
     path(r'admin', views.adminrender),
     path(r'moderatorlist', views.moderatorlist),
     path(r'userlist', views.userlist),
-    re_path(r'^portlist/(?P<dock>\w+)/(?P<port>)/$', views.shiplist),
-    re_path(r'^portlist/(?P<dock>\w+)/$', views.docklist),
-    path(r'portlist/<str:id>', views.portlist),
+    # re_path(r'^portlist/(?P<dock>\w+)/(?P<port>)/$', views.shiplist),
+    # re_path(r'^portlist/(?P<id>\w+)/$', views.portinfo, name="portinfo"),
     path(r'portlist', views.portlist),
+    path(r'portlist/<int:id>/', views.portinfo, name="portinfo"),
+    path(r'portlist/<int:id>/<int:dock>/', views.dockinfo, name="dockinfo"),
+    # path(r'portlist/<int:id>/<int:worker>', views.portinfo, name="workerlist"),
 ]

@@ -100,42 +100,60 @@ def error404(request):
 
 # Обработка страниц со списком модераторов
 def moderatorlist(request):
-    with open("Data/users.json") as read_file_json:
+    with open("Data/users.json", encoding='utf-8') as read_file_json:
         users = json.load(read_file_json)
     return render(request, "moderatorlist.html")
 
 
 # Обработка страниц со списком пользователей
 def userlist(request):
-    with open("Data/users.json") as read_file_json:
+    with open("Data/users.json", encoding='utf-8') as read_file_json:
         users = json.load(read_file_json)
     return render(request, "userlist.html")
 
 
 # Обработка страниц со списком портов
-def portlist(request, ID):
-    with open("Data/data.json") as read_file_json:
+def portlist(request):
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
-    Port = {}
-    for i in data["Port"]:
-        if i["ID"] == ID:
-            Port = i
-            break
-    return render(request, "portlist.html", {'Port': Port})
+    Ports = data["Port"]
+    return render(request, "portlist.html", {"Port": Ports})
+
+
+# Вывод информации о порте
+def portinfo(request, id):
+    id = id - 1
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data["Port"][id]
+    Docks = Port["Docks"]
+    Workers = Port["Workers"]
+    return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers})
 
 
 # Обработка страниц со списком портов
 def docklist(request, id):
-    with open("Data/data.json") as read_file_json:
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
-        Dock = data["port"][0]
-
+        Dock = data["port"][id]
     return render(request, "docklist.html")
+
+
+# Вывод информации о причале
+def dockinfo(request, id, dock):
+    id = id - 1
+    dock = dock - 1
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data["Port"][id]
+    Dock = Port["Docks"][dock]
+    Ships = Dock["Ships"]
+    return render(request, "dockinfo.html", {"Dock": Dock, "Ships": Ships})
 
 
 # Обработка страниц со списком портов
 def shiplist(request):
-    with open("Data/data.json") as read_file_json:
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
         Ship = data["port"]
     return render(request, "shiplist.html")
