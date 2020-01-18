@@ -110,7 +110,7 @@ def moderatorlist(request):
         users = data["users"]
         listmoderators = []
         for i in users:
-            if i["Function"] == "Moderator":
+            if i["Function"] == "Moderator" and i["Work"]:
                 listmoderators.append(i)
         return render(request, "moderatorlist.html", {"moderators": listmoderators})
     else:

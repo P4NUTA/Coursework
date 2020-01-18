@@ -5,6 +5,7 @@
       "Login": "BigBoy13",
       "Password": "qwerty123",
       "ID": 1,
+      "Work": true,
       "Function": "Admin"
     },
     {
@@ -12,6 +13,7 @@
       "Login": "SureLady",
       "Password": "Sherlock",
       "ID": 2,
+      "Work": true,
       "Function": "Moderator"
     },
     {
@@ -19,6 +21,7 @@
       "Login": "Ponchik",
       "Password": "tasty",
       "ID": 3,
+      "Work": true,
       "Function": "User"
     }
   ]

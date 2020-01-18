@@ -12,12 +12,14 @@
           "Name": "Причал",
           "WorkNorm": 45.3,
           "WorkTime": "пн-пт 10-20",
+          "Work": true,
           "Type": "Cargo",
           "Ships": [
             {
               "ID": 1,
               "Name": "Корабль",
               "Type": "Cargo",
+              "Work": true,
               "Characteristic": "Science",
               "Time": "четверг 13:00"
             }
@@ -29,6 +31,7 @@
           "FIO": "Малышев А.А.",
           "Role": "Главный",
           "ID": 1,
+          "Work": true,
           "Salary": 120000
         }
       ]
