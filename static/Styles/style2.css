@@ -40,3 +40,14 @@ table{
 a {
 	color: #e97e0a;
 }
+button{
+	margin: 20px auto;
+	padding: 7px;
+	background-color: #2d2d3d;
+	border-style: inset;
+	border-color: #e97e0a;
+}
+button:hover{
+	background-color: #1a1a40;
+	border-color: orange;
+}
