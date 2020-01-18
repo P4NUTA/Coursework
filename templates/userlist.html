@@ -11,6 +11,7 @@
 <img class="image1" src="port_icon.png">
 </header>
 <h1>Пользователи:</h1>
+<button><a href="на добавление">Добавить</a></button>
 {% for i in Port %}
 <table>
         <th colspan="2"><a href="{% url 'portinfo' i.ID %}">{{ i.Name }}</a></th>
