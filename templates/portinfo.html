@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            {{ Port.Name }}
+        {% endblock %}
+    </title>
+</head>
+<body>
+<h1>Причалы</h1>
+{% for i in Docks %}
+    <p>Название: <a href="{% url 'dockinfo' Port.ID i.ID%}">{{ i.Name }}</a></p>
+    <p>Рабочая норма: {{ i.WorkNorm }}</p>
+    <p>Время работы: {{ i.WorkTime }}</p>
+    <p>Тип: {{ i.Type }}</p>
+{% endfor %}
+<h1>Рабочие</h1>
+{% for i in Workers %}
+    <p>Имя: {{ i.FIO }}</p>
+    <p>Роль: {{ i.Role }}</p>
+    <p>Зарплата: {{ i.Salary }}</p>
+{% endfor %}
+</body>
+</html>

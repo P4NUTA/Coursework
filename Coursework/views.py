@@ -13,6 +13,8 @@ Loginglobal = "none"
 Passglobal = "none"
 Funcglobal = "none"
 Nameglobal = "none"
+
+
 # Обработка главной страницы
 @csrf_exempt
 def index(request):
@@ -49,6 +51,7 @@ def index(request):
                 Passglobal = checkPass
                 Funcglobal = checkFunc
                 Nameglobal = i["Name"]
+
                 # request.session.set_expiry(15)
                 # request.session['in'] = True
                 # request.session['login'] = i['login']
@@ -74,7 +77,7 @@ def adminrender(request):
     global Funcglobal
     global Nameglobal
     # Проверка залогинности
-    if Loginglobal == "none":
+    if Funcglobal == "none":
         return redirect("/")
     # Обработка страницы
     return render(request, "menu_admin.html")
@@ -100,42 +103,81 @@ def error404(request):
 
 # Обработка страниц со списком модераторов
 def moderatorlist(request):
-    with open("Data/users.json") as read_file_json:
-        users = json.load(read_file_json)
-    return render(request, "moderatorlist.html")
+    global Funcglobal
+    if Funcglobal == "Admin":
+        with open("Data/users.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        users = data["users"]
+        listmoderators = []
+        for i in users:
+            if i["Function"] == "Moderator" and i["Work"]:
+                listmoderators.append(i)
+        return render(request, "moderatorlist.html", {"moderators": listmoderators})
+    else:
+        return redirect("/")
 
 
 # Обработка страниц со списком пользователей
 def userlist(request):
-    with open("Data/users.json") as read_file_json:
-        users = json.load(read_file_json)
-    return render(request, "userlist.html")
+    global Funcglobal
+    if Funcglobal == "Admin" or Funcglobal == "Moderator":
+        with open("Data/users.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        users = data["users"]
+        listusers = []
+        for i in users:
+            if i["Function"] == "User":
+                listusers.append(i)
+        return render(request, "userlist.html", {"users": listusers})
+    else:
+        return redirect("/")
 
 
 # Обработка страниц со списком портов
-def portlist(request, ID):
-    with open("Data/data.json") as read_file_json:
+def portlist(request):
+    global Funcglobal
+    if Funcglobal == "none":
+        return redirect("/")
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
-    Port = {}
-    for i in data["Port"]:
-        if i["ID"] == ID:
-            Port = i
-            break
-    return render(request, "portlist.html", {'Port': Port})
+    Ports = data["Port"]
+    return render(request, "portlist.html", {"Port": Ports})
+
+
+# Вывод информации о порте
+def portinfo(request, id):
+    id = id - 1
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data["Port"][id]
+    Docks = Port["Docks"]
+    Workers = Port["Workers"]
+    return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers})
 
 
 # Обработка страниц со списком портов
 def docklist(request, id):
-    with open("Data/data.json") as read_file_json:
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
-        Dock = data["port"][0]
-
+        Dock = data["port"][id]
     return render(request, "docklist.html")
+
+
+# Вывод информации о причале
+def dockinfo(request, id, dock):
+    id = id - 1
+    dock = dock - 1
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data["Port"][id]
+    Dock = Port["Docks"][dock]
+    Ships = Dock["Ships"]
+    return render(request, "dockinfo.html", {"Dock": Dock, "Ships": Ships})
 
 
 # Обработка страниц со списком портов
 def shiplist(request):
-    with open("Data/data.json") as read_file_json:
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
         Ship = data["port"]
     return render(request, "shiplist.html")

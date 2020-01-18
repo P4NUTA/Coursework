@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Пользователи</title>
 </head>
 <body>
-
+{% for user in users %}
+    <p>ФИО: {{ user.Name }}</p>
+    <p>ID: {{ user.ID }}</p>
+    <p>Логин: {{ user.Login }}</p>
+    <p>Пароль: {{ user.Password }}</p>
+{% endfor %}
 </body>
 </html>

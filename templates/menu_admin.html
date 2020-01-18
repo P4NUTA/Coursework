@@ -12,11 +12,11 @@
 </header>
 <body>
 <table> 
-<div class="special"><a href="">Список модераторов<a></div> 
-<div class="special"><a href="">Список пользователей<a></div> 
-<div class="special"><a href="">Список портов<a></div> 
-<div class="special"><a href="">Список доков<a></div> 
-<div class="special"><a href="">Список кораблей<a></div> 
+<div class="special"><a href="{% url 'moderatorlist' %}">Список модераторов</a></div>
+<div class="special"><a href="{% url 'userlist' %}">Список пользователей</a></div>
+<div class="special"><a href="{% url 'portlist' %}">Список портов</a></div>
+<div class="special"><a href="">Список доков</a></div>
+<div class="special"><a href="">Список кораблей</a></div>
 </table>
 </body>
 </html>

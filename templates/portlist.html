@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Port</title>
 </head>
 <body>
-
+<h1>Порты</h1>
+{% for i in Port %}
+        <h1><a href="{% url 'portinfo' i.ID %}">{{ i.Name }}</a></h1>
+        <p>{{ i.Address }}</p>
+        <p>{{ i.Work }}</p>
+        <p>{{ i.Time }}</p>
+{% endfor %}
 </body>
 </html>

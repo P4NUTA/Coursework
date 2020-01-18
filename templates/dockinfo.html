@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            {{ Dock.Name }}
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% for i in Ships %}
+    <p>Название: {{ i.Name }}</p>
+    <p>Рабочая норма: {{ i.Type }}</p>
+    <p>Время работы: {{ i.Characteristic }}</p>
+    <p>Тип: {{ i.Time }}</p>
+{% endfor %}
+</body>
+</html>
