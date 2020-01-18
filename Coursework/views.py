@@ -13,6 +13,8 @@ Loginglobal = "none"
 Passglobal = "none"
 Funcglobal = "none"
 Nameglobal = "none"
+
+
 # Обработка главной страницы
 @csrf_exempt
 def index(request):
@@ -49,6 +51,7 @@ def index(request):
                 Passglobal = checkPass
                 Funcglobal = checkFunc
                 Nameglobal = i["Name"]
+
                 # request.session.set_expiry(15)
                 # request.session['in'] = True
                 # request.session['login'] = i['login']
@@ -74,7 +77,7 @@ def adminrender(request):
     global Funcglobal
     global Nameglobal
     # Проверка залогинности
-    if Loginglobal == "none":
+    if Funcglobal == "none":
         return redirect("/")
     # Обработка страницы
     return render(request, "menu_admin.html")
@@ -100,20 +103,41 @@ def error404(request):
 
 # Обработка страниц со списком модераторов
 def moderatorlist(request):
-    with open("Data/users.json", encoding='utf-8') as read_file_json:
-        users = json.load(read_file_json)
-    return render(request, "moderatorlist.html")
+    global Funcglobal
+    if Funcglobal == "Admin":
+        with open("Data/users.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        users = data["users"]
+        listmoderators = []
+        for i in users:
+            if i["Function"] == "Moderator":
+                listmoderators.append(i)
+        return render(request, "moderatorlist.html", {"moderators": listmoderators})
+    else:
+        return redirect("/")
 
 
 # Обработка страниц со списком пользователей
 def userlist(request):
-    with open("Data/users.json", encoding='utf-8') as read_file_json:
-        users = json.load(read_file_json)
-    return render(request, "userlist.html")
+    global Funcglobal
+    if Funcglobal == "Admin" or Funcglobal == "Moderator":
+        with open("Data/users.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        users = data["users"]
+        listusers = []
+        for i in users:
+            if i["Function"] == "User":
+                listusers.append(i)
+        return render(request, "userlist.html", {"users": listusers})
+    else:
+        return redirect("/")
 
 
 # Обработка страниц со списком портов
 def portlist(request):
+    global Funcglobal
+    if Funcglobal == "none":
+        return redirect("/")
     with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
     Ports = data["Port"]
