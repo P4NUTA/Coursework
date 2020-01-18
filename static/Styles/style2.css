@@ -28,6 +28,8 @@ h1{
 	text-align: left;
 }
 table{
+	margin: 20px auto;
+	padding: 10px;
 	letter-spacing:0.1em;
 	font-family: impact;
 	color: #e97e0a;
