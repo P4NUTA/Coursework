@@ -1,31 +1,34 @@
-{
-  "users": [
-    {
-      "Name": "Малышев А.А.",
-      "Login": "BigBoy13",
-      "Password": "qwerty123",
-      "ID": 1,
-      "Work": true,
-      "Function": "Admin"
-    },
-    {
-      "Name": "Анисимова К.А.",
-      "Login": "SureLady",
-      "Password": "Sherlock",
-      "ID": 2,
-      "Work": true,
-      "Function": "Moderator"
-    },
-    {
-      "Name": "Ефимов П.Л.",
-      "Login": "Ponchik",
-      "Password": "tasty",
-      "ID": 3,
-      "Work": true,
-      "Function": "User"
-    }
-  ]
-}
-
-
-
+[
+  {
+    "Name": "Малышев А.А.",
+    "Login": "BigBoy13",
+    "Password": "qwerty123",
+    "ID": 1,
+    "Work": true,
+    "Function": "Admin"
+  },
+  {
+    "Name": "Анисимова К.А.",
+    "Login": "SureLady",
+    "Password": "Sherlock",
+    "ID": 2,
+    "Work": true,
+    "Function": "Moderator"
+  },
+  {
+    "Name": "Ефимов П.Л.",
+    "Login": "Ponchik",
+    "Password": "tasty",
+    "ID": 3,
+    "Work": true,
+    "Function": "User"
+  },
+  {
+    "Name": "Кидин А.В.",
+    "Login": "ondrey",
+    "Password": "ytrewq",
+    "ID": 4,
+    "Work": true,
+    "Function": "User"
+  }
+]
