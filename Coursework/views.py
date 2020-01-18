@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from .forms import LoginForm
+from .forms import LoginForm, AddUser
 
 # Глобальные переменные
 Loginglobal = "none"
@@ -44,7 +44,7 @@ def index(request):
         checkPass = req.get("password")
         checkFunc = "none"
         # Поиск пользователя
-        for i in users["users"]:
+        for i in users:
             if i["Login"] == checkLogin and i["Password"] == checkPass:
                 checkFunc = i["Function"]
                 Loginglobal = checkLogin
@@ -63,7 +63,7 @@ def index(request):
                 return redirect("/admin")
             elif Funcglobal == "Moderator":
                 return redirect("/moderator")
-            elif Funcglobal == "user":
+            elif Funcglobal == "User":
                 return redirect("/user")
     # Обработка страницы
     return render(request, 'index.html', {'form': loginform})
@@ -85,12 +85,12 @@ def adminrender(request):
 
 # Обработка страницы модератора
 def moderatorrender(request):
-    return render(request, "moderator.html")
+    return render(request, "menu_moderator.html")
 
 
 # Обработка страницы пользователя
 def userrender(request):
-    return render(request, "user.html")
+    return render(request, "menu_user.html")
 
 
 def indexhttp(request):
@@ -107,7 +107,7 @@ def moderatorlist(request):
     if Funcglobal == "Admin":
         with open("Data/users.json", encoding='utf-8') as read_file_json:
             data = json.load(read_file_json)
-        users = data["users"]
+        users = data
         listmoderators = []
         for i in users:
             if i["Function"] == "Moderator" and i["Work"]:
@@ -123,7 +123,7 @@ def userlist(request):
     if Funcglobal == "Admin" or Funcglobal == "Moderator":
         with open("Data/users.json", encoding='utf-8') as read_file_json:
             data = json.load(read_file_json)
-        users = data["users"]
+        users = data
         listusers = []
         for i in users:
             if i["Function"] == "User":
@@ -155,13 +155,6 @@ def portinfo(request, id):
     return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers})
 
 
-# Обработка страниц со списком портов
-def docklist(request, id):
-    with open("Data/data.json", encoding='utf-8') as read_file_json:
-        data = json.load(read_file_json)
-        Dock = data["port"][id]
-    return render(request, "docklist.html")
-
 
 # Вывод информации о причале
 def dockinfo(request, id, dock):
@@ -175,42 +168,46 @@ def dockinfo(request, id, dock):
     return render(request, "dockinfo.html", {"Dock": Dock, "Ships": Ships})
 
 
-# Обработка страниц со списком портов
-def shiplist(request):
-    with open("Data/data.json", encoding='utf-8') as read_file_json:
-        data = json.load(read_file_json)
-        Ship = data["port"]
-    return render(request, "shiplist.html")
-
 @csrf_exempt
 def adduser(request):
     if request.POST:
+        userform = AddUser()
         with open("Data/users.json", encoding='utf-8') as read_file_json:
             data = json.load(read_file_json)
-        users = data["users"]
+        users = data
         req = request.POST
         Name = req.get("Name")
-        checkLogin = req.get("login")
-        checkPass = req.get("password")
-        checkFunc = req.get("function")
+        checkLogin = req.get("Login")
+        checkPass = req.get("Password")
         checkerror = True
         for i in users:
-            if checkLogin == i["login"]:
+            if checkLogin == i["Login"]:
                 print("Error")
                 checkerror = False
                 break
         if checkerror:
-            ID = len(users) - 1
+            ID = len(users) + 1
             newuser = {
                 "Name": Name,
                 "Login": checkLogin,
                 "Password": checkPass,
                 "ID": ID,
                 "Work": True,
-                "Function": checkFunc
+                "Function": "User"
             }
             users.append(newuser)
             with open('Data/users.json', 'w', encoding='utf-8') as read_file_json:
                 read_file_json.write(json.dumps(users, ensure_ascii=False, separators=(',', ': '), indent=2))
 
     return render (request,"adduser.html", {})
+
+def logout(request):
+    global Loginglobal
+    global Passglobal
+    global Funcglobal
+    global Nameglobal
+    Loginglobal = "none"
+    Passglobal = "none"
+    Funcglobal = "none"
+    Nameglobal = "none"
+    return redirect("/")
