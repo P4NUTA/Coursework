@@ -33,5 +33,6 @@ urlpatterns = [
     path(r'portlist', views.portlist, name="portlist"),
     path(r'portlist/<int:id>/', views.portinfo, name="portinfo"),
     path(r'portlist/<int:id>/<int:dock>/', views.dockinfo, name="dockinfo"),
+    path(r'adduser', views.adduser, name="adduser"),
     # path(r'portlist/<int:id>/<int:worker>', views.portinfo, name="workerlist"),
 ]

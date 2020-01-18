@@ -181,3 +181,36 @@ def shiplist(request):
         data = json.load(read_file_json)
         Ship = data["port"]
     return render(request, "shiplist.html")
+
+@csrf_exempt
+def adduser(request):
+    if request.POST:
+        with open("Data/users.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        users = data["users"]
+        req = request.POST
+        Name = req.get("Name")
+        checkLogin = req.get("login")
+        checkPass = req.get("password")
+        checkFunc = req.get("function")
+        checkerror = True
+        for i in users:
+            if checkLogin == i["login"]:
+                print("Error")
+                checkerror = False
+                break
+        if checkerror:
+            ID = len(users) - 1
+            newuser = {
+                "Name": Name,
+                "Login": checkLogin,
+                "Password": checkPass,
+                "ID": ID,
+                "Work": True,
+                "Function": checkFunc
+            }
+            users.append(newuser)
+            with open('Data/users.json', 'w', encoding='utf-8') as read_file_json:
+                read_file_json.write(json.dumps(users, ensure_ascii=False, separators=(',', ': '), indent=2))
+
+    return render (request,"adduser.html", {})
