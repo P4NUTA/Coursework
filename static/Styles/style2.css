@@ -1,0 +1,40 @@
+body {
+	background-color: #2d2d3d;
+	text-align: center;
+	margin:0px;
+}
+header {
+	display: flex; 
+	justify-content: space-between;
+	align-items: left;
+	font-family: impact;
+	color: #2d2d3d;
+	background-color: #e97e0a;
+	height: 200px;
+}
+h1{
+	font-family: impact;
+	color: #e97e0a;
+	letter-spacing:0.1em;
+}
+.image{
+	position: left;
+	width:700px;
+	height: 200px;
+}
+.image1{
+	transform: rotate(-45deg);
+	width: 200px;
+	text-align: left;
+}
+table{
+	letter-spacing:0.1em;
+	font-family: impact;
+	color: #e97e0a;
+	border-style: solid;
+	border-color: #e97e0a;
+	color:#e97e0a;
+}
+a {
+	color: #e97e0a;
+}
