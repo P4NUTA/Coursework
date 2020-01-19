@@ -7,20 +7,30 @@
             {{ Port.Name }}
         {% endblock %}
     </title>
+	<link href="static/styles/style3.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h1>Причалы</h1>
+<header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
+<h1>Причалы:</h1>
 {% for i in Docks %}
-    <p>Название: <a href="{% url 'dockinfo' Port.ID i.ID%}">{{ i.Name }}</a></p>
-    <p>Рабочая норма: {{ i.WorkNorm }}</p>
-    <p>Время работы: {{ i.WorkTime }}</p>
-    <p>Тип: {{ i.Type }}</p>
+<table>
+    <tr><th>Название:</th><td><a href="{% url 'dockinfo' Port.ID i.ID%}">{{ i.Name }}</a></td>
+    <tr><th>Рабочая норма:</th><td>{{ i.WorkNorm }}</td>
+    <tr><th>Время работы:</th><td>{{ i.WorkTime }}</td>
+    <tr><th>Тип:</th><td>{{ i.Type }}</td>
+</table>
 {% endfor %}
 <h1>Рабочие</h1>
 {% for i in Workers %}
-    <p>Имя: {{ i.FIO }}</p>
-    <p>Роль: {{ i.Role }}</p>
-    <p>Зарплата: {{ i.Salary }}</p>
+<table>
+    <tr><th>Имя:</th><td>{{ i.FIO }}</td>
+    <tr><th>Роль:</th><td>{{ i.Role }}</td>
+    <tr><th>Зарплата:</th><td>{{ i.Salary }}</td>
+</table>
 {% endfor %}
+<button><a href="/">Назад</a></button>
 </body>
 </html>
