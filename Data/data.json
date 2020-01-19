@@ -165,6 +165,24 @@
       "Time": "пн-ср 9-18",
       "Docks": [],
       "Workers": []
+    },
+    {
+      "ID": 6,
+      "Name": "фцвцфв",
+      "Address": "фцвцв",
+      "Work": true,
+      "Time": "цвцвф",
+      "Docks": [],
+      "Workers": []
+    },
+    {
+      "ID": 7,
+      "Name": "Порт6",
+      "Address": "фцв",
+      "Work": true,
+      "Time": "фцв",
+      "Docks": [],
+      "Workers": []
     }
   ]
 }
