@@ -22,6 +22,14 @@
               "Work": true,
               "Characteristic": "Science",
               "Time": "четверг 13:00"
+            },
+            {
+              "ID": 2,
+              "Name": "Аврора",
+              "Type": "Военный",
+              "Work": true,
+              "Characteristic": "Военный",
+              "Time": "пятница-хуятница"
             }
           ]
         },

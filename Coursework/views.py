@@ -165,7 +165,7 @@ def dockinfo(request, id, dock):
     Port = data["Port"][id]
     Dock = Port["Docks"][dock]
     Ships = Dock["Ships"]
-    return render(request, "dockinfo.html", {"Dock": Dock, "Ships": Ships})
+    return render(request, "dockinfo.html", {"Port": Port, "Dock": Dock, "Ships": Ships})
 
 
 @csrf_exempt
@@ -328,10 +328,10 @@ def addworker(request, id):
     return render(request, "addworker.html", {})
 
 
-def addship(request, id, dock_id):
+def addship(request, id, dock):
     if request.POST:
         id = id - 1
-        dock_id = dock_id - 1
+        dock = dock - 1
         with open("Data/data.json", encoding='utf-8') as read_file_json:
             data = json.load(read_file_json)
         Port = data
@@ -340,20 +340,20 @@ def addship(request, id, dock_id):
         checkType = req.get("Type")
         checkCharacteristic = req.get("Characteristic")
         checkTime = req.get("Time")
-        ID = len(Port["Port"][id]["Workers"]) + 1
+        ID = len(Port["Port"][id]["Docks"][dock]["Ships"]) + 1
         newship = {
-                "ID": 1,
+                "ID": ID,
                 "Name": checkName,
                 "Type": checkType,
                 "Work": True,
-                "Characteristic": "Science",
-                "Time": "четверг 13:00"
+                "Characteristic": checkCharacteristic,
+                "Time": checkTime
             }
-        data["Port"][id]["Workers"].append(newship)
+        data["Port"][id]["Docks"][dock]["Ships"].append(newship)
         with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
             read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
 
-    return render(request, "addworker.html", {})
+    return render(request, "addship.html", {})
 
 
 
