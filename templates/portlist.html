@@ -2,15 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Port</title>
+    <title>Порт</title>
+<link href="/static/Styles/style2.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h1>Порты</h1>
+<header>
+<img class="image" src="/static/porthub_menu.png">
+<img class="image1" src="/static/port_icon.png">
+</header>
+<h1>Порты:</h1>
+<button><a href="на добавление">Добавить</a></button>
 {% for i in Port %}
-        <h1><a href="{% url 'portinfo' i.ID %}">{{ i.Name }}</a></h1>
-        <p>{{ i.Address }}</p>
-        <p>{{ i.Work }}</p>
-        <p>{{ i.Time }}</p>
+<table>
+        <th colspan="2"><a href="{% url 'portinfo' i.ID %}">{{ i.Name }}</a></th>
+        <tr><th>Местоположение:</th><td>{{ i.Address }}</td></tr>
+        <tr><th>Работоспособность:</th><td>{{ i.Work }}</td></tr>
+        <tr><th>Расписание:</th><td>{{ i.Time }}</td></tr>
+        <tr><th colspan="2"><button><a href="на редактирование">Редактировать</a></button></th></tr>
+</table>
 {% endfor %}
+<button><a href="/">Назад</a></button>
 </body>
 </html>

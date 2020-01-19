@@ -8,7 +8,10 @@
  <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <br><input type="submit" value="Войти"/></br>
+     <p><label for="id_name">ФИО :</label> <input type="text" name="Name" maxlength="100" required="" id="id_name"></p>
+     <p><label for="id_username">Логин :</label> <input type="text" name="Login" maxlength="100" required="" id="id_username"></p>
+     <p><label for="id_password">Пароль :</label> <input type="text" name="Password" maxlength="100" required="" id="id_password"></p>
+        <br><input type="submit" value="Создать"/></br>
     </form>
 </body>
 </html>
