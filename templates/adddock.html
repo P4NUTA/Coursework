@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <p><label for="id_Name">Название :</label> <input type="text" name="Name" maxlength="100" required="" id="id_Name"></p>
+    <p><label for="id_WorkNorm">Рабочая норма :</label> <input type="text" name="WorkNorm" maxlength="100" required="" id="id_WorkNorm"></p>
+    <p><label for="id_WorkTime">Время :</label> <input type="text" name="WorkTime" maxlength="100" required="" id="id_WorkTime"></p>
+    <p><label for="id_Type">Тип :</label> <input type="text" name="Type" maxlength="100" required="" id="id_Type"></p>
+    <br><input type="submit" value="Создать"/></br>
+    </form>
+</body>
+</html>

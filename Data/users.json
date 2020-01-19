@@ -30,5 +30,13 @@
     "ID": 4,
     "Work": true,
     "Function": "User"
+  },
+  {
+    "Name": "Штрейх А. А.",
+    "Login": "voyi",
+    "Password": "asdf",
+    "ID": 5,
+    "Work": true,
+    "Function": "Moderator"
   }
 ]

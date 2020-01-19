@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>Причалы</h1>
+<button><a href="{% url 'adddock' Port.ID %}">Добавить</a></button>
 {% for i in Docks %}
     <p>Название: <a href="{% url 'dockinfo' Port.ID i.ID%}">{{ i.Name }}</a></p>
     <p>Рабочая норма: {{ i.WorkNorm }}</p>

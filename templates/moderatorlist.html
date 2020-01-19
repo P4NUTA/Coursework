@@ -5,6 +5,7 @@
     <title>Модераторы</title>
 </head>
 <body>
+<button><a href="{% url 'addmoderator' %}">Добавить</a></button>
 {% for moderator in moderators %}
     <p>ФИО: {{ moderator.Name }}</p>
     <p>ID: {{ moderator.ID }}</p>
