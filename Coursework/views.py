@@ -112,7 +112,7 @@ def moderatorlist(request):
         for i in users:
             if i["Function"] == "Moderator" and i["Work"]:
                 listmoderators.append(i)
-        return render(request, "moderatorlist.html", {"moderators": listmoderators})
+        return render(request, "moderatorlist.html", {"moderators": listmoderators, "Func": Funcglobal})
     else:
         return redirect("/")
 
@@ -128,7 +128,7 @@ def userlist(request):
         for i in users:
             if i["Function"] == "User":
                 listusers.append(i)
-        return render(request, "userlist.html", {"users": listusers})
+        return render(request, "userlist.html", {"users": listusers, "Func":Funcglobal})
     else:
         return redirect("/")
 
@@ -152,7 +152,7 @@ def portinfo(request, id):
     Port = data["Port"][id]
     Docks = Port["Docks"]
     Workers = Port["Workers"]
-    return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers})
+    return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers, "Func":Funcglobal})
 
 
 
@@ -336,18 +336,20 @@ def addship(request, id, dock_id):
             data = json.load(read_file_json)
         Port = data
         req = request.POST
-        checkName = req.get("FIO")
-        checkRole = req.get("Role")
-        checkSalary = req.get("Salary")
+        checkName = req.get("Name")
+        checkType = req.get("Type")
+        checkCharacteristic = req.get("Characteristic")
+        checkTime = req.get("Time")
         ID = len(Port["Port"][id]["Workers"]) + 1
-        newWorker = {
-            "FIO": checkName,
-            "Role": checkRole,
-            "ID": ID,
-            "Work": True,
-            "Salary": checkSalary,
-        }
-        data["Port"][id]["Workers"].append(newWorker)
+        newship = {
+                "ID": 1,
+                "Name": checkName,
+                "Type": checkType,
+                "Work": True,
+                "Characteristic": "Science",
+                "Time": "четверг 13:00"
+            }
+        data["Port"][id]["Workers"].append(newship)
         with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
             read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
 
