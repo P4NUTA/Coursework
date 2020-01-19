@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Добавить работника</title>
+	<link href="styleform.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
+<fieldset>
+<legend>Добавление нового работника</legend>
 <form action="" method="POST">
     {% csrf_token %}
     <p><label for="id_FIO">ФИО :</label> <input type="text" name="FIO" maxlength="100" required="" id="id_FIO"></p>
