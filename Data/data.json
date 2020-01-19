@@ -24,6 +24,15 @@
               "Time": "четверг 13:00"
             }
           ]
+        },
+        {
+          "ID": 2,
+          "Name": "Причал2",
+          "WorkNorm": "30",
+          "WorkTime": "ср-пт 9-10",
+          "Work": true,
+          "Type": "Учебный",
+          "Ships": []
         }
       ],
       "Workers": [
@@ -69,6 +78,20 @@
           "ID": 1,
           "Work": true,
           "Salary": 60000
+        },
+        {
+          "FIO": null,
+          "Role": "программист",
+          "ID": 2,
+          "Work": true,
+          "Salary": "70000"
+        },
+        {
+          "FIO": "Кидин А. А.",
+          "Role": "программист",
+          "ID": 3,
+          "Work": true,
+          "Salary": "70000"
         }
       ]
     },
@@ -117,6 +140,15 @@
           "Ships": []
         }
       ],
+      "Workers": []
+    },
+    {
+      "ID": 5,
+      "Name": "Порт5",
+      "Address": "Измайловская",
+      "Work": true,
+      "Time": "пн-ср 9-18",
+      "Docks": [],
       "Workers": []
     }
   ]
