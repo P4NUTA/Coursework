@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Пользователи</title>
+<link href="style2.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-{% for user in users %}
-    <p>ФИО: {{ user.Name }}</p>
-    <p>ID: {{ user.ID }}</p>
-    <p>Логин: {{ user.Login }}</p>
-    <p>Пароль: {{ user.Password }}</p>
+<header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
+<h1>Пользователи:</h1>
+<button><a href="на добавление">Добавить</a></button>
+{% for i in Port %}
+<table>
+        <th colspan="2"><a href="{% url 'portinfo' i.ID %}">{{ i.Name }}</a></th>
+        <tr><th>ФИО:</th><td>{{ user.Name }}</td></tr>
+        <tr><th>ID:</th><td>{{ user.ID }}</td></tr>
+        <tr><th>Логин:</th><td>{{ user.Login }}</td></tr>
+		 <tr><th>Пароль:</th><td>{{ user.Password }}</td></tr>
+</table>
 {% endfor %}
+<button><a href="в меню">Назад</a></button>
 </body>
 </html>
