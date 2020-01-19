@@ -38,5 +38,21 @@
     "ID": 5,
     "Work": true,
     "Function": "Moderator"
+  },
+  {
+    "Name": "Кидин А.В.",
+    "Login": "фффвыфв",
+    "Password": "фывыфвв",
+    "ID": 6,
+    "Work": true,
+    "Function": "Moderator"
+  },
+  {
+    "Name": "выфыфв",
+    "Login": "ыфвфвыукп",
+    "Password": "пвку",
+    "ID": 7,
+    "Work": true,
+    "Function": "User"
   }
 ]
