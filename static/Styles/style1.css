@@ -28,7 +28,6 @@ input {
 	height: 200px;
 }
 .image1{
-	transform: rotate(-45deg);
 	width: 200px;
 	text-align: left;
 }

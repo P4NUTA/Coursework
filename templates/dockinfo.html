@@ -14,7 +14,9 @@
 <img class="image" src="/static/porthub_menu.png">
 <img class="image1" src="/static/port_icon.png">
 </header>
+ {%  if Func == "Admin" %}
 <button><a href="{% url 'addship' Port.ID Dock.ID %}">Добавить</a></button>
+ {% endif %}
 {% for i in Ships %}
 <table>
     <tr><th>Название:</th><td> {{ i.Name }}</td>

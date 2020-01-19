@@ -165,7 +165,7 @@ def dockinfo(request, id, dock):
     Port = data["Port"][id]
     Dock = Port["Docks"][dock]
     Ships = Dock["Ships"]
-    return render(request, "dockinfo.html", {"Port": Port, "Dock": Dock, "Ships": Ships})
+    return render(request, "dockinfo.html", {"Port": Port, "Dock": Dock, "Ships": Ships, "Func": Funcglobal})
 
 
 @csrf_exempt
