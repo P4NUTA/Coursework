@@ -328,6 +328,33 @@ def addworker(request, id):
     return render(request, "addworker.html", {})
 
 
+def addship(request, id, dock_id):
+    if request.POST:
+        id = id - 1
+        dock_id = dock_id - 1
+        with open("Data/data.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        Port = data
+        req = request.POST
+        checkName = req.get("FIO")
+        checkRole = req.get("Role")
+        checkSalary = req.get("Salary")
+        ID = len(Port["Port"][id]["Workers"]) + 1
+        newWorker = {
+            "FIO": checkName,
+            "Role": checkRole,
+            "ID": ID,
+            "Work": True,
+            "Salary": checkSalary,
+        }
+        data["Port"][id]["Workers"].append(newWorker)
+        with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
+            read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
+
+    return render(request, "addworker.html", {})
+
+
+
 def logout(request):
     global Loginglobal
     global Passglobal

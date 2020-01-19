@@ -37,7 +37,8 @@ urlpatterns = [
     path(r'addmoderator', views.addmoderator, name="addmoderator"),
     path(r'addport', views.addport, name="addport"),
     path(r'portlist/<int:id>/adddock', views.adddock, name="adddock"),
-path(r'portlist/<int:id>/addworker', views.addworker, name="addworker"),
+    path(r'portlist/<int:id>/addworker', views.addworker, name="addworker"),
+    path(r'portlist/<int:id>/<int:dock>/', views.addship, name="addship"),
     path(r'logout', views.logout, name="logout"),
     # path(r'portlist/<int:id>/<int:worker>', views.portinfo, name="workerlist"),
 ]
