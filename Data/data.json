@@ -64,17 +64,60 @@
       ],
       "Workers": [
         {
-          "FIO": "Малышев А.А.",
-          "Role": "Главный",
+          "FIO": "Анисимова",
+          "Role": "Шерлок",
           "ID": 1,
           "Work": true,
-          "Salary": 120000
+          "Salary": 60000
         }
       ]
+    },
+    {
+      "ID": 3,
+      "Name": "Порт3",
+      "Address": "Биржа",
+      "Work": true,
+      "Time": "пн-чт 9-18",
+      "Docks": [
+        {
+          "ID": 1,
+          "Name": "Причал1",
+          "WorkNorm": "40",
+          "WorkTime": null,
+          "Work": true,
+          "Type": "Учебный",
+          "Ships": []
+        },
+        {
+          "ID": 2,
+          "Name": "Причал2",
+          "WorkNorm": "40",
+          "WorkTime": "суббота",
+          "Work": true,
+          "Type": "Грузовой",
+          "Ships": []
+        }
+      ],
+      "Workers": []
+    },
+    {
+      "ID": 4,
+      "Name": "Порт4",
+      "Address": "Гастелло",
+      "Work": true,
+      "Time": "пн-сб 9-20",
+      "Docks": [
+        {
+          "ID": 1,
+          "Name": "Причал1",
+          "WorkNorm": "40",
+          "WorkTime": null,
+          "Work": true,
+          "Type": "Грузовой",
+          "Ships": []
+        }
+      ],
+      "Workers": []
     }
-
   ]
 }
-
-
-

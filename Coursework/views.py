@@ -199,7 +199,111 @@ def adduser(request):
             with open('Data/users.json', 'w', encoding='utf-8') as read_file_json:
                 read_file_json.write(json.dumps(users, ensure_ascii=False, separators=(',', ': '), indent=2))
 
-    return render (request,"adduser.html", {})
+    return render(request, "adduser.html", {})
+
+
+@csrf_exempt
+def addmoderator(request):
+    if request.POST:
+        userform = AddUser()
+        with open("Data/users.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        users = data
+        req = request.POST
+        Name = req.get("Name")
+        checkLogin = req.get("Login")
+        checkPass = req.get("Password")
+        checkerror = True
+        for i in users:
+            if checkLogin == i["Login"]:
+                print("Error")
+                checkerror = False
+                break
+        if checkerror:
+            ID = len(users) + 1
+            newuser = {
+                "Name": Name,
+                "Login": checkLogin,
+                "Password": checkPass,
+                "ID": ID,
+                "Work": True,
+                "Function": "Moderator"
+            }
+            users.append(newuser)
+            with open('Data/users.json', 'w', encoding='utf-8') as read_file_json:
+                read_file_json.write(json.dumps(users, ensure_ascii=False, separators=(',', ': '), indent=2))
+
+    return render(request, "addmoderator.html", {})
+
+
+def addport(request):
+    if request.POST:
+        with open("Data/data.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        Port = data
+        req = request.POST
+        checkName = req.get("Name")
+        checkAddress = req.get("Address")
+        checkTime = req.get("Time")
+        checkerror = True
+        for i in Port["Port"]:
+            if checkName == i["Name"]:
+                print("Error")
+                checkerror = False
+                break
+        if checkerror:
+            ID = len(Port["Port"]) + 1
+            newPort = {
+                "ID": ID,
+                "Name": checkName,
+                "Address": checkAddress,
+                "Work": True,
+                "Time": checkTime,
+                "Docks": [],
+                "Workers": []
+            }
+            data["Port"].append(newPort)
+            with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
+                read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
+
+    return render(request, "addport.html", {})
+
+def adddock(request, id):
+    if request.POST:
+        id = id-1
+        with open("Data/data.json", encoding='utf-8') as read_file_json:
+            data = json.load(read_file_json)
+        Port = data
+        req = request.POST
+        checkName = req.get("Name")
+        checkWorkNorm = req.get("WorkNorm")
+        checkTime = req.get("WorkTime")
+        checkType = req.get("Type")
+        checkerror = True
+        for i in Port["Port"][id]["Docks"]:
+            if checkName == i["Name"]:
+                print("Error")
+                checkerror = False
+                break
+        if checkerror:
+            ID = len(Port["Port"][id]["Docks"]) + 1
+            newDock = {
+                "ID": ID,
+                "Name": checkName,
+                "WorkNorm": checkWorkNorm,
+                "WorkTime": checkTime,
+                "Work": True,
+                "Type": checkType,
+                "Ships": []
+            }
+            data["Port"][id]["Docks"].append(newDock)
+            with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
+                read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
+
+    return render(request, "adddock.html", {})
+
+
+
 
 def logout(request):
     global Loginglobal
