@@ -1,0 +1,49 @@
+body {
+	background-color: #2d2d3d;
+	text-align: center;
+	margin:0px;
+}
+header {
+	display: flex; 
+	justify-content: space-between;
+	align-items: left;
+	font-family: impact;
+	color: #2d2d3d;
+	background-color: #e97e0a;
+	height: 200px;
+}
+input {
+	text-align:left;
+	padding: 6px 12px 6px 12px;
+	border: 3px;
+	border-style: ridge;
+	border-color:  #e97e0a;
+	background-color: #2d2d3d; 
+	color: #e97e0a;
+	font-size: 20px;
+}
+.image{
+	position: left;
+	width:700px;
+	height: 200px;
+}
+.image1{
+	transform: rotate(-45deg);
+	width: 200px;
+	text-align: left;
+}
+a {
+	color: #2d2d3d;
+}
+fieldset {
+	margin: 10px;
+	border: 5px;
+	border-color: #e97e0a;
+	border-style: ridge;
+}
+legend {
+	font-size:2em;
+	text-align: left;
+	font-family: impact;
+	color: #e97e0a;
+}
