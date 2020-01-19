@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить пользователя</title>
+    <title>Добавить модератора</title>
 	<link href="styleform.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -11,7 +11,7 @@
 <img class="image1" src="port_icon.png">
 </header>
 <fieldset>
-<legend>Добавление нового пользователя</legend>
+<legend>Добавление нового модератора</legend>
  <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
