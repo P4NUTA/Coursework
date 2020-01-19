@@ -14,6 +14,7 @@
 <img class="image" src="static/porthub_menu.png">
 <img class="image1" src="static/port_icon.png">
 </header>
+<button><a href="{% url 'adddock' %}">Добавить</a></button>
 {% for i in Ships %}
 <table>
     <tr><th>Название:</th><td> {{ i.Name }}</td>
