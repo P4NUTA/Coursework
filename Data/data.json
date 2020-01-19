@@ -42,6 +42,13 @@
           "ID": 1,
           "Work": true,
           "Salary": 120000
+        },
+        {
+          "FIO": "фвц",
+          "Role": "фв",
+          "ID": 2,
+          "Work": true,
+          "Salary": "34"
         }
       ]
     },

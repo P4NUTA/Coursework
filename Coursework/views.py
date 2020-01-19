@@ -141,7 +141,7 @@ def portlist(request):
     with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
     Ports = data["Port"]
-    return render(request, "portlist.html", {"Port": Ports})
+    return render(request, "portlist.html", {"Port": Ports, "Func": Funcglobal})
 
 
 # Вывод информации о порте
