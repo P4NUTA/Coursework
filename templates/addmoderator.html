@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить пользователя</title>
+	<link href="styleform.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
+<fieldset>
+<legend>Добавление нового пользователя</legend>
  <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
