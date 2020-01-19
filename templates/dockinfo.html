@@ -7,13 +7,21 @@
             {{ Dock.Name }}
         {% endblock %}
     </title>
+    <link href="static/Styles/style3.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+ <header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
 {% for i in Ships %}
-    <p>Название: {{ i.Name }}</p>
-    <p>Рабочая норма: {{ i.Type }}</p>
-    <p>Время работы: {{ i.Characteristic }}</p>
-    <p>Тип: {{ i.Time }}</p>
+<table>
+    <tr><th>Название:</th><td> {{ i.Name }}</td>
+    <tr><th>Рабочая норма:</th><td> {{ i.Type }}</td>
+    <tr><th>Время работы:</th><td> {{ i.Characteristic }}</td>
+    <tr><th>Тип:</th><td> {{ i.Time }}</td>
+</table>
 {% endfor %}
+<button><a href="/">Назад</a></button>
 </body>
 </html>
