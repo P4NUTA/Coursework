@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление портов</title>
+	<link href="styleform.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
+<fieldset>
+<legend>Добавление нового порта</legend>
+ <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+     <p><label for="id_Name">Название :</label> <input type="text" name="Name" maxlength="100" required="" id="id_Name"></p>
+     <p><label for="id_Address">Адрес :</label> <input type="text" name="Address" maxlength="100" required="" id="id_Address"></p>
+     <p><label for="id_Time">Время :</label> <input type="text" name="Time" maxlength="100" required="" id="id_Time"></p>
+        <br><input type="submit" value="Создать"/></br>
+    </form>
+</fieldset>
+</body>
+</html>
