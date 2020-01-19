@@ -10,7 +10,9 @@
     <img class="image" src="/static/porthub_menu.png">
     <img class="image1" src="/static/port_icon.png">
 </header>
+{%  if Func == "Admin" %}
 <button><a href="{% url 'addmoderator' %}">Добавить</a></button>
+{% endif %}
 {% for moderator in moderators %}
     <table>
     <tr><th>ФИО:</th><td> {{ moderator.Name }}</td>
