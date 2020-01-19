@@ -11,7 +11,9 @@
 <img class="image1" src="/static/port_icon.png">
 </header>
 <h1>Пользователи:</h1>
+{%  if Func == "Admin" %}
 <button><a href="{% url 'adduser' %}">Добавить</a></button>
+{% endif %}
 {% for user in users %}
 <table>
         <tr><th>ФИО:</th><td>{{ user.Name }}</td></tr>
