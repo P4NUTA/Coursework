@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Добавить корабль</title>
+	<link href="styleform.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<header>
+<img class="image" src="porthub_menu.png">
+<img class="image1" src="port_icon.png">
+</header>
+<fieldset>
+<legend>Добавление нового судна</legend>
  <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
