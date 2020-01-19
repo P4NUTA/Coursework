@@ -15,6 +15,7 @@
 <img class="image1" src="/static/port_icon.png">
 </header>
 <h1>Причалы:</h1>
+<button><a href="{% url 'adddocks' %}">Добавить</a></button>
 {% for i in Docks %}
 <table>
     <tr><th>Название:</th><td><a href="{% url 'dockinfo' Port.ID i.ID%}">{{ i.Name }}</a></td>
@@ -24,6 +25,7 @@
 </table>
 {% endfor %}
 <h1>Рабочие</h1>
+<button><a href="{% url 'addworker' %}">Добавить</a></button>
 {% for i in Workers %}
 <table>
     <tr><th>Имя:</th><td>{{ i.FIO }}</td>
