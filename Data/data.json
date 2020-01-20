@@ -22,7 +22,8 @@
               "Work": true,
               "Characteristic": "500",
               "Time": "четверг 14:00",
-              "TimeArrive": "пятница 18:00"
+              "TimeArrive": "пятница 18:00",
+              "Delivery": "Магадан"
             },
             {
               "ID": 2,
@@ -31,7 +32,8 @@
               "Work": true,
               "Characteristic": "800",
               "Time": "среда 16:00",
-              "TimeArrive": "пятница 18:00"
+              "TimeArrive": "пятница 18:00",
+              "Delivery": "Омск"
             }
           ]
         },
@@ -50,7 +52,8 @@
               "Work": true,
               "Characteristic": "450",
               "Time": "среда 16:00",
-              "TimeArrive": "пятница 18:00"
+              "TimeArrive": "пятница 18:00",
+              "Delivery": "Северодвинск"
             }
           ]
         }
@@ -94,7 +97,8 @@
               "Work": true,
               "Characteristic": "200",
               "Time": "понедельник 9:00",
-              "TimeArrive": "среда 18:00"
+              "TimeArrive": "среда 18:00",
+              "Delivery": "Москва"
             },
             {
               "ID": 2,
@@ -103,7 +107,8 @@
               "Work": true,
               "Characteristic": "250",
               "Time": "вторник 11:00",
-              "TimeArrive": "пятница 16:00"
+              "TimeArrive": "пятница 16:00",
+              "Delivery": "Санкт-Петербург"
             }
           ]
         }

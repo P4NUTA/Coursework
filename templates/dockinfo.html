@@ -36,6 +36,9 @@
         <tr>
             <th>Дата прибытия:</th>
             <td> {{ i.TimeArrive }}</td>
+    <tr>
+            <th>Место прибытия:</th>
+            <td> {{ i.Delivery }}</td>
     </table>
 {% endfor %}
 <button><a href="{% url 'portinfo' Port.ID %}">Назад</a></button>

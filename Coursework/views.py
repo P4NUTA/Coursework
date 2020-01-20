@@ -20,7 +20,7 @@ def index(request):
     global Passglobal
     global Funcglobal
     global Nameglobal
-    if Loginglobal:
+    if Loginglobal != "none":
         if Funcglobal == "Admin":
             return redirect("/admin")
         elif Funcglobal == "Moderator":
@@ -41,9 +41,8 @@ def index(request):
                 Passglobal = checkPass
                 Funcglobal = checkFunc
                 Nameglobal = i["Name"]
-
                 break
-        if Loginglobal:
+        if Loginglobal != "none":
             if Funcglobal == "Admin":
                 return redirect("/admin")
             elif Funcglobal == "Moderator":
@@ -341,6 +340,7 @@ def addship(request, id, dock):
         checkCharacteristic = req.get("Characteristic")
         checkTime = req.get("Time")
         checkTimeArrive = req.get("TimeArrive")
+        checkDelivery = req.get("Delivery")
         ID = len(Port["Port"][id]["Docks"][dock]["Ships"]) + 1
         newship = {
             "ID": ID,
@@ -349,7 +349,8 @@ def addship(request, id, dock):
             "Work": True,
             "Characteristic": checkCharacteristic,
             "Time": checkTime,
-            "TimeArrive": checkTimeArrive
+            "TimeArrive": checkTimeArrive,
+            "Delivery": checkDelivery
         }
         data["Port"][id]["Docks"][dock]["Ships"].append(newship)
         with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:

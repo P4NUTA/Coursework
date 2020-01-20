@@ -27,6 +27,8 @@
                                                                  id="id_Time"></p>
         <p><label for="id_TimeArrive">Дата прибытия:</label> <input type="text" name="TimeArrive" maxlength="100"
                                                                     required="" id="id_TimeArrive"></p>
+        <p><label for="id_Delivery">Место прибытия:</label> <input type="text" name="Delivery" maxlength="100"
+                                                                    required="" id="id_Delivery"></p>
         <br><input type="submit" value="Создать"/></br>
     </form>
     <a href="{% url 'dockinfo' Port.ID Dock.ID %}"><input type="submit" value="Назад"></input></a>
