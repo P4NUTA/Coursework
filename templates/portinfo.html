@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>
         {% block title %}
             {{ Port.Name }}
         {% endblock %}
     </title>
-	<link href="/static/Styles/style3.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/style3.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}" alt="">
+    <img class="image1" src="{% static 'port_icon.png' %}" alt="">
 </header>
-<h1>Причалы:</h1>
-{%  if Func == "Admin" %}
-<button><a href="{% url 'adddock' Port.ID %}">Добавить</a></button>
+<h1>Причалы</h1>
+{% if Func == "Admin" %}
+    <button><a href="{% url 'adddock' Port.ID %}">Добавить</a></button>
 {% endif %}
 {% for i in Docks %}
-<table>
-    <tr><th>Название:</th><td><a href="{% url 'dockinfo' Port.ID i.ID%}">{{ i.Name }}</a></td>
-    <tr><th>Рабочая норма:</th><td>{{ i.WorkNorm }}</td>
-    <tr><th>Время работы:</th><td>{{ i.WorkTime }}</td>
+    <table>
+        <tr>
+            <th>Название:</th>
+            <td><a href="{% url 'dockinfo' Port.ID i.ID %}">{{ i.Name }}</a></td>
+        <tr>
+            <th>Рабочая норма:</th>
+            <td>{{ i.WorkNorm }}</td>
+        <tr>
+            <th>Время работы:</th>
+            <td>{{ i.WorkTime }}</td>
     <tr><th>Тип:</th><td>{{ i.Type }}</td>
 </table>
 {% endfor %}
 <h1>Рабочие</h1>
-{%  if Func == "Admin" %}
-<button><a href="{% url 'addworker' Port.ID %}">Добавить</a></button>
+{% if Func == "Admin" %}
+    <button><a href="{% url 'addworker' Port.ID %}">Добавить</a></button>
 {% endif %}
 {% for i in Workers %}
-<table>
-    <tr><th>Имя:</th><td>{{ i.FIO }}</td>
-    <tr><th>Роль:</th><td>{{ i.Role }}</td>
-    <tr><th>Зарплата:</th><td>{{ i.Salary }}</td>
-</table>
+    <table>
+        <tr>
+            <th>Имя:</th>
+            <td>{{ i.FIO }}</td>
+        <tr>
+            <th>Роль:</th>
+            <td>{{ i.Role }}</td>
+        <tr>
+            <th>Зарплата:</th>
+            <td>{{ i.Salary }}</td>
+    </table>
 {% endfor %}
-<button><a href="/">Назад</a></button>
+<button><a href="{% url 'portlist' %}">Назад</a></button>
 </body>
 </html>

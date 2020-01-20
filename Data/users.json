@@ -1,65 +1,33 @@
 [
   {
-    "Name": "Малышев А.А.",
-    "Login": "BigBoy13",
-    "Password": "qwerty123",
+    "Name": "Ефимов П.Л.",
+    "Login": "Ponchik",
+    "Password": "1",
     "ID": 1,
     "Work": true,
     "Function": "Admin"
   },
   {
-    "Name": "Анисимова К.А.",
-    "Login": "SureLady",
-    "Password": "Sherlock",
+    "Name": "Иванов И.И.",
+    "Login": "Ivanov",
+    "Password": "1",
     "ID": 2,
     "Work": true,
     "Function": "Moderator"
   },
   {
-    "Name": "Ефимов П.Л.",
-    "Login": "Ponchik",
-    "Password": "tasty",
+    "Name": "Кидин А.А.",
+    "Login": "andy",
+    "Password": "1",
     "ID": 3,
     "Work": true,
     "Function": "User"
   },
   {
-    "Name": "Кидин А.В.",
-    "Login": "ondrey",
-    "Password": "ytrewq",
+    "Name": "Антонов А.А",
+    "Login": "Antonov1",
+    "Password": "1",
     "ID": 4,
-    "Work": true,
-    "Function": "User"
-  },
-  {
-    "Name": "Штрейх А. А.",
-    "Login": "voyi",
-    "Password": "asdf",
-    "ID": 5,
-    "Work": true,
-    "Function": "Moderator"
-  },
-  {
-    "Name": "Кидин А.В.",
-    "Login": "фффвыфв",
-    "Password": "фывыфвв",
-    "ID": 6,
-    "Work": true,
-    "Function": "Moderator"
-  },
-  {
-    "Name": "выфыфв",
-    "Login": "ыфвфвыукп",
-    "Password": "пвку",
-    "ID": 7,
-    "Work": true,
-    "Function": "User"
-  },
-  {
-    "Name": "fdgdgsf",
-    "Login": "sdfsfd",
-    "Password": "tfhdfht",
-    "ID": 8,
     "Work": true,
     "Function": "User"
   }

@@ -1,19 +1,20 @@
 <html lang="ru">
 <head>
-<title>
-Авторизация
-</title>
+    {% load static %}
+    <title>
+        Авторизация
+    </title>
 </head>
-<link href="../static/Styles/style.css" type="text/css" rel="stylesheet">
+<link href="{% static 'Styles/style.css' %}" type="text/css" rel="stylesheet">
 <header>
-<img src="../static/porthub.png">
-<h1> Авторизация: </h1>
+    <img src="{% static 'porthub.png' %}">
+    <h1> Авторизация: </h1>
 </header>
 <body>
- <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br><input type="submit" value="Войти"/></br>
-    </form>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br><input type="submit" value="Войти"/></br>
+</form>
 </body>
 </html>

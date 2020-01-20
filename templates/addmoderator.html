@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Добавить модератора</title>
-	<link href="/static/Styles/styleform.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/styleform.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
 <fieldset>
-<legend>Добавление нового модератора</legend>
- <form action="" method="POST">
+    <legend>Добавление нового модератора</legend>
+    <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-     <p><label for="id_name">ФИО :</label> <input type="text" name="Name" maxlength="100" required="" id="id_name"></p>
-     <p><label for="id_username">Логин :</label> <input type="text" name="Login" maxlength="100" required="" id="id_username"></p>
-     <p><label for="id_password">Пароль :</label> <input type="text" name="Password" maxlength="100" required="" id="id_password"></p>
+        <p><label for="id_name">ФИО :</label> <input type="text" name="Name" maxlength="100" required="" id="id_name">
+        </p>
+        <p><label for="id_username">Логин :</label> <input type="text" name="Login" maxlength="100" required=""
+                                                           id="id_username"></p>
+        <p><label for="id_password">Пароль :</label> <input type="text" name="Password" maxlength="100" required=""
+                                                            id="id_password"></p>
         <br><input type="submit" value="Создать"/></br>
     </form>
+    <a href="{% url 'moderatorlist' %}"><input type="submit" value="Назад"></input></a>
+</fieldset>
 </body>
 </html>

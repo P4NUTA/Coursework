@@ -25,7 +25,7 @@ SECRET_KEY = 'm!7t!f6+cyzx)80j9i_x6iyc+^h5d*fx-9$louh(-yl1%-j1n!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["p4nuta.com", "localhost", "127.0.0.1"]
 
 
 # Application definition

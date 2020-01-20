@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Порт</title>
-<link href="/static/Styles/style2.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/style2.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
-<h1>Порты:</h1>
-{%  if Func == "Admin" %}
-<button><a href="{% url 'addport' %}">Добавить</a></button>
+<h1>Порты</h1>
+{% if Func == "Admin" %}
+    <button><a href="{% url 'addport' %}">Добавить</a></button>
 {% endif %}
 {% for i in Port %}
-<table>
+    <table>
         <th colspan="2"><a href="{% url 'portinfo' i.ID %}">{{ i.Name }}</a></th>
-        <tr><th>Местоположение:</th><td>{{ i.Address }}</td></tr>
-        <tr><th>Работоспособность:</th><td>{{ i.Work }}</td></tr>
-        <tr><th>Расписание:</th><td>{{ i.Time }}</td></tr>
+        <tr>
+            <th>Местоположение:</th>
+            <td>{{ i.Address }}</td>
+        </tr>
+        <tr>
+            <th>Расписание:</th>
+            <td>{{ i.Time }}</td>
+        </tr>
 </table>
 {% endfor %}
 <button><a href="/">Назад</a></button>

@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Пользователи</title>
-<link href="/static/Styles/style2.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/style2.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
-<h1>Пользователи:</h1>
+<h1>Пользователи</h1>
 {% if Func == "Admin" or Func == "Moderator" %}
-<button><a href="{% url 'adduser' %}">Добавить</a></button>
+    <button><a href="{% url 'adduser' %}">Добавить</a></button>
 {% endif %}
 {% for user in users %}
-<table>
-        <tr><th>ФИО:</th><td>{{ user.Name }}</td></tr>
-        <tr><th>ID:</th><td>{{ user.ID }}</td></tr>
-        <tr><th>Логин:</th><td>{{ user.Login }}</td></tr>
+    <table>
+        <tr>
+            <th>ФИО:</th>
+            <td>{{ user.Name }}</td>
+        </tr>
+        <tr>
+            <th>ID:</th>
+            <td>{{ user.ID }}</td>
+        </tr>
+        <tr>
+            <th>Логин:</th>
+            <td>{{ user.Login }}</td>
+        </tr>
 	<tr><th>Пароль:</th><td>{{ user.Password }}</td></tr>
 </table>
 {% endfor %}

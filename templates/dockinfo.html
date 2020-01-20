@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>
         {% block title %}
             {{ Dock.Name }}
         {% endblock %}
     </title>
-    <link href="/static/Styles/style3.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/style3.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
- <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+<header>
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
- {%  if Func == "Admin" %}
-<button><a href="{% url 'addship' Port.ID Dock.ID %}">Добавить</a></button>
- {% endif %}
+<h1>Корабли</h1>
+{% if Func == "Admin" %}
+    <button><a href="{% url 'addship' Port.ID Dock.ID %}">Добавить</a></button>
+{% endif %}
 {% for i in Ships %}
-<table>
-    <tr><th>Название:</th><td> {{ i.Name }}</td>
-    <tr><th>Рабочая норма:</th><td> {{ i.Type }}</td>
-    <tr><th>Время работы:</th><td> {{ i.Characteristic }}</td>
-    <tr><th>Тип:</th><td> {{ i.Time }}</td>
-</table>
+    <table>
+        <tr>
+            <th>Название:</th>
+            <td> {{ i.Name }}</td>
+        <tr>
+            <th>Тип судна:</th>
+            <td> {{ i.Type }}</td>
+        <tr>
+            <th>Характеристика:</th>
+            <td> {{ i.Characteristic }}</td>
+        <tr>
+            <th>Дата отправления:</th>
+            <td> {{ i.Time }}</td>
+        <tr>
+            <th>Дата прибытия:</th>
+            <td> {{ i.TimeArrive }}</td>
+    </table>
 {% endfor %}
-<button><a href="/">Назад</a></button>
+<button><a href="{% url 'portinfo' Port.ID %}">Назад</a></button>
 </body>
 </html>

@@ -2,187 +2,128 @@
   "Port": [
     {
       "ID": 1,
-      "Name": "Порт1",
+      "Name": "Порт 1",
       "Address": "Кронверский пр. 49",
       "Work": true,
       "Time": "пн-сб 8-21",
       "Docks": [
         {
           "ID": 1,
-          "Name": "Причал",
-          "WorkNorm": 45.3,
-          "WorkTime": "пн-пт 10-20",
+          "Name": "Причал 1",
+          "WorkNorm": 5,
+          "WorkTime": "пн-чт 13-18",
           "Work": true,
-          "Type": "Cargo",
+          "Type": "Грузовой",
           "Ships": [
             {
               "ID": 1,
-              "Name": "Корабль",
-              "Type": "Cargo",
+              "Name": "Корабль 1",
+              "Type": "Грузовой",
               "Work": true,
-              "Characteristic": "Science",
-              "Time": "четверг 13:00"
+              "Characteristic": "500",
+              "Time": "четверг 14:00",
+              "TimeArrive": "пятница 18:00"
             },
             {
               "ID": 2,
-              "Name": "Аврора",
-              "Type": "Военный",
+              "Name": "Корабль 2",
+              "Type": "Грузовой",
               "Work": true,
-              "Characteristic": "Военный",
-              "Time": "пятница-хуятница"
+              "Characteristic": "800",
+              "Time": "среда 16:00",
+              "TimeArrive": "пятница 18:00"
             }
           ]
         },
         {
           "ID": 2,
-          "Name": "Причал2",
-          "WorkNorm": "30",
-          "WorkTime": "ср-пт 9-10",
+          "Name": "Причал 2",
+          "WorkNorm": 4,
+          "WorkTime": "ср-пт 15-20",
           "Work": true,
-          "Type": "Учебный",
-          "Ships": []
+          "Type": "Пассажирский",
+          "Ships": [
+            {
+              "ID": 1,
+              "Name": "Корабль 1",
+              "Type": "Пассажирский",
+              "Work": true,
+              "Characteristic": "450",
+              "Time": "среда 16:00",
+              "TimeArrive": "пятница 18:00"
+            }
+          ]
         }
       ],
       "Workers": [
         {
-          "FIO": "Малышев А.А.",
-          "Role": "Главный",
+          "FIO": "Ефимов П.Л.",
+          "Role": "Руководитель",
           "ID": 1,
           "Work": true,
-          "Salary": 120000
+          "Salary": 180000
         },
         {
-          "FIO": "фвц",
-          "Role": "фв",
+          "FIO": "Иванов И.И.",
+          "Role": "Заместитель",
           "ID": 2,
           "Work": true,
-          "Salary": "34"
+          "Salary": "80000"
         }
       ]
     },
     {
       "ID": 2,
-      "Name": "Порт2",
-      "Address": "Ломоносово 9",
+      "Name": "Порт 2",
+      "Address": "Ломоносова 9",
       "Work": true,
       "Time": "пн-сб 8-20",
       "Docks": [
         {
           "ID": 1,
-          "Name": "Причал1",
-          "WorkNorm": 45.3,
-          "WorkTime": "пн-пт 10-20",
+          "Name": "Причал 3",
+          "WorkNorm": "2",
+          "WorkTime": "пн-ср 9-18",
           "Work": true,
-          "Type": "Cargo",
+          "Type": "Пассажирский",
           "Ships": [
             {
               "ID": 1,
-              "Name": "Корабль",
-              "Type": "Cargo",
+              "Name": "Корабль 3",
+              "Type": "Пассажирский",
               "Work": true,
-              "Characteristic": "Science",
-              "Time": "четверг 13:00"
+              "Characteristic": "200",
+              "Time": "понедельник 9:00",
+              "TimeArrive": "среда 18:00"
+            },
+            {
+              "ID": 2,
+              "Name": "Корабль 4",
+              "Type": "Пассажирский",
+              "Work": true,
+              "Characteristic": "250",
+              "Time": "вторник 11:00",
+              "TimeArrive": "пятница 16:00"
             }
           ]
         }
       ],
       "Workers": [
         {
-          "FIO": "Анисимова",
-          "Role": "Шерлок",
+          "FIO": "Смирнов С.С.",
+          "Role": "Руководитель",
           "ID": 1,
           "Work": true,
-          "Salary": 60000
+          "Salary": "120000"
         },
         {
-          "FIO": null,
-          "Role": "программист",
+          "FIO": "Антонов А.А.",
+          "Role": "Заместитель",
           "ID": 2,
-          "Work": true,
-          "Salary": "70000"
-        },
-        {
-          "FIO": "Кидин А. А.",
-          "Role": "программист",
-          "ID": 3,
           "Work": true,
           "Salary": "70000"
         }
       ]
-    },
-    {
-      "ID": 3,
-      "Name": "Порт3",
-      "Address": "Биржа",
-      "Work": true,
-      "Time": "пн-чт 9-18",
-      "Docks": [
-        {
-          "ID": 1,
-          "Name": "Причал1",
-          "WorkNorm": "40",
-          "WorkTime": null,
-          "Work": true,
-          "Type": "Учебный",
-          "Ships": []
-        },
-        {
-          "ID": 2,
-          "Name": "Причал2",
-          "WorkNorm": "40",
-          "WorkTime": "суббота",
-          "Work": true,
-          "Type": "Грузовой",
-          "Ships": []
-        }
-      ],
-      "Workers": []
-    },
-    {
-      "ID": 4,
-      "Name": "Порт4",
-      "Address": "Гастелло",
-      "Work": true,
-      "Time": "пн-сб 9-20",
-      "Docks": [
-        {
-          "ID": 1,
-          "Name": "Причал1",
-          "WorkNorm": "40",
-          "WorkTime": null,
-          "Work": true,
-          "Type": "Грузовой",
-          "Ships": []
-        }
-      ],
-      "Workers": []
-    },
-    {
-      "ID": 5,
-      "Name": "Порт5",
-      "Address": "Измайловская",
-      "Work": true,
-      "Time": "пн-ср 9-18",
-      "Docks": [],
-      "Workers": []
-    },
-    {
-      "ID": 6,
-      "Name": "фцвцфв",
-      "Address": "фцвцв",
-      "Work": true,
-      "Time": "цвцвф",
-      "Docks": [],
-      "Workers": []
-    },
-    {
-      "ID": 7,
-      "Name": "Порт6",
-      "Address": "фцв",
-      "Work": true,
-      "Time": "фцв",
-      "Docks": [],
-      "Workers": []
     }
   ]
 }

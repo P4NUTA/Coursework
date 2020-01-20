@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Добавить корабль</title>
-	<link href="/static/Styles/styleform.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/styleform.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
 <fieldset>
-<legend>Добавление нового судна</legend>
- <form action="" method="POST">
+    <legend>Добавление нового судна</legend>
+    <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-     <p><label for="id_Name">Название :</label> <input type="text" name="Name" maxlength="100" required="" id="id_Name"></p>
-     <p><label for="id_Type">Тип :</label> <input type="text" name="Type" maxlength="100" required="" id="id_Type"></p>
-     <p><label for="id_Characteristic">Характеристика :</label> <input type="text" name="Characteristic" maxlength="100" required="" id="id_Characteristic"></p>
-     <p><label for="id_Time">Время :</label> <input type="text" name="Time" maxlength="100" required="" id="id_Time"></p>
+        <p><label for="id_Name">Название :</label> <input type="text" name="Name" maxlength="100" required=""
+                                                          id="id_Name"></p>
+        <p><label for="id_Type">Тип :</label> <input type="text" name="Type" maxlength="100" required="" id="id_Type">
+        </p>
+        <p><label for="id_Characteristic">Характеристика :</label> <input type="text" name="Characteristic"
+                                                                          maxlength="100" required=""
+                                                                          id="id_Characteristic"></p>
+        <p><label for="id_Time">Дата отправления:</label> <input type="text" name="Time" maxlength="100" required=""
+                                                                 id="id_Time"></p>
+        <p><label for="id_TimeArrive">Дата прибытия:</label> <input type="text" name="TimeArrive" maxlength="100"
+                                                                    required="" id="id_TimeArrive"></p>
         <br><input type="submit" value="Создать"/></br>
     </form>
+    <a href="{% url 'dockinfo' Port.ID Dock.ID %}"><input type="submit" value="Назад"></input></a>
 </body>
 </html>

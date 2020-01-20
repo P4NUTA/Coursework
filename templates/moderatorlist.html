@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Модераторы</title>
-    <link href="/static/Styles/style3.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/style3.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-    <img class="image" src="/static/porthub_menu.png">
-    <img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
-{%  if Func == "Admin" %}
-<button><a href="{% url 'addmoderator' %}">Добавить</a></button>
+<h1>Модераторы</h1>
+{% if Func == "Admin" %}
+    <button><a href="{% url 'addmoderator' %}">Добавить</a></button>
 {% endif %}
 {% for moderator in moderators %}
     <table>
-    <tr><th>ФИО:</th><td> {{ moderator.Name }}</td>
-    <tr><th>ID:</th><td> {{ moderator.ID }}</td>
-    <tr><th>Логин:</th><td> {{ moderator.Login }}</td>
+        <tr>
+            <th>ФИО:</th>
+            <td> {{ moderator.Name }}</td>
+        <tr>
+            <th>ID:</th>
+            <td> {{ moderator.ID }}</td>
+        <tr>
+            <th>Логин:</th>
+            <td> {{ moderator.Login }}</td>
     <tr><th>Пароль: </th><td>{{ moderator.Password }}</td>
     </table>
 {% endfor %}

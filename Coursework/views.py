@@ -1,49 +1,39 @@
 import json
 
-from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from .forms import LoginForm, AddUser
+from .forms import LoginForm
 
-# Глобальные переменные
 Loginglobal = "none"
 Passglobal = "none"
 Funcglobal = "none"
 Nameglobal = "none"
 
 
-# Обработка главной страницы
 @csrf_exempt
 def index(request):
-    # Форма входа
     loginform = LoginForm()
-
-    # Подключение глобальных переменных
     global Loginglobal
     global Passglobal
     global Funcglobal
     global Nameglobal
-    # Проверка логина
     if Loginglobal:
         if Funcglobal == "Admin":
             return redirect("/admin")
         elif Funcglobal == "Moderator":
             return redirect("/moderator")
-        elif Funcglobal == "user":
+        elif Funcglobal == "User":
             return redirect("/user")
-    # Вход
     if request.POST:
-        # Проверка входа в систему
         with open("Data/users.json", 'rb') as read_file_json:
             users = json.load(read_file_json)
         req = request.POST
         checkLogin = req.get("username")
         checkPass = req.get("password")
         checkFunc = "none"
-        # Поиск пользователя
         for i in users:
             if i["Login"] == checkLogin and i["Password"] == checkPass:
                 checkFunc = i["Function"]
@@ -52,12 +42,7 @@ def index(request):
                 Funcglobal = checkFunc
                 Nameglobal = i["Name"]
 
-                # request.session.set_expiry(15)
-                # request.session['in'] = True
-                # request.session['login'] = i['login']
-                # request.session['Function'] = i['Function']
                 break
-        # Быдло проверка входа
         if Loginglobal:
             if Funcglobal == "Admin":
                 return redirect("/admin")
@@ -65,31 +50,30 @@ def index(request):
                 return redirect("/moderator")
             elif Funcglobal == "User":
                 return redirect("/user")
-    # Обработка страницы
     return render(request, 'index.html', {'form': loginform})
 
 
-# Обработка страницы админа
 def adminrender(request):
-    # Подключение глобальных переменных
     global Loginglobal
     global Passglobal
     global Funcglobal
     global Nameglobal
-    # Проверка залогинности
-    if Funcglobal == "none":
+
+    if Funcglobal != "Admin":
         return redirect("/")
-    # Обработка страницы
+
     return render(request, "menu_admin.html")
 
 
-# Обработка страницы модератора
 def moderatorrender(request):
+    if Funcglobal != "Moderator":
+        return redirect("/")
     return render(request, "menu_moderator.html")
 
 
-# Обработка страницы пользователя
 def userrender(request):
+    if Funcglobal != "User":
+        return redirect("/")
     return render(request, "menu_user.html")
 
 
@@ -97,11 +81,18 @@ def indexhttp(request):
     return HttpResponse("123")
 
 
-def error404(request):
-    return Http404("123")
+def handler404(request):
+    response = render('404.html', context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
 
 
-# Обработка страниц со списком модераторов
+def handler500(request):
+    response = render('500.html', context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+
 def moderatorlist(request):
     global Funcglobal
     if Funcglobal == "Admin":
@@ -117,7 +108,7 @@ def moderatorlist(request):
         return redirect("/")
 
 
-# Обработка страниц со списком пользователей
+
 def userlist(request):
     global Funcglobal
     if Funcglobal == "Admin" or Funcglobal == "Moderator":
@@ -133,7 +124,6 @@ def userlist(request):
         return redirect("/")
 
 
-# Обработка страниц со списком портов
 def portlist(request):
     global Funcglobal
     if Funcglobal == "none":
@@ -144,20 +134,23 @@ def portlist(request):
     return render(request, "portlist.html", {"Port": Ports, "Func": Funcglobal})
 
 
-# Вывод информации о порте
 def portinfo(request, id):
+    global Funcglobal
+    if Funcglobal == "none":
+        return redirect("/")
     id = id - 1
     with open("Data/data.json", encoding='utf-8') as read_file_json:
         data = json.load(read_file_json)
     Port = data["Port"][id]
     Docks = Port["Docks"]
     Workers = Port["Workers"]
-    return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers, "Func":Funcglobal})
+    return render(request, "portinfo.html", {"Port": Port, "Docks": Docks, "Workers": Workers, "Func": Funcglobal})
 
 
-
-# Вывод информации о причале
 def dockinfo(request, id, dock):
+    global Funcglobal
+    if Funcglobal == "none":
+        return redirect("/")
     id = id - 1
     dock = dock - 1
     with open("Data/data.json", encoding='utf-8') as read_file_json:
@@ -170,8 +163,10 @@ def dockinfo(request, id, dock):
 
 @csrf_exempt
 def adduser(request):
+    global Funcglobal
+    if Funcglobal != "Admin" and Funcglobal != "Moderator":
+        return redirect("/")
     if request.POST:
-        userform = AddUser()
         with open("Data/users.json", encoding='utf-8') as read_file_json:
             data = json.load(read_file_json)
         users = data
@@ -204,8 +199,10 @@ def adduser(request):
 
 @csrf_exempt
 def addmoderator(request):
+    global Funcglobal
+    if Funcglobal != "Admin":
+        return redirect("/")
     if request.POST:
-        userform = AddUser()
         with open("Data/users.json", encoding='utf-8') as read_file_json:
             data = json.load(read_file_json)
         users = data
@@ -268,12 +265,13 @@ def addport(request):
 
     return render(request, "addport.html", {})
 
+
 def adddock(request, id):
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data
+    id = id - 1
     if request.POST:
-        id = id-1
-        with open("Data/data.json", encoding='utf-8') as read_file_json:
-            data = json.load(read_file_json)
-        Port = data
         req = request.POST
         checkName = req.get("Name")
         checkWorkNorm = req.get("WorkNorm")
@@ -300,15 +298,16 @@ def adddock(request, id):
             with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
                 read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
 
-    return render(request, "adddock.html", {})
+    return render(request, "adddock.html", {"Port": Port["Port"][id]})
+
 
 @csrf_exempt
 def addworker(request, id):
+    id = id - 1
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data
     if request.POST:
-        id = id - 1
-        with open("Data/data.json", encoding='utf-8') as read_file_json:
-            data = json.load(read_file_json)
-        Port = data
         req = request.POST
         checkName = req.get("FIO")
         checkRole = req.get("Role")
@@ -325,36 +324,38 @@ def addworker(request, id):
         with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
             read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
 
-    return render(request, "addworker.html", {})
+    return render(request, "addworker.html", {"Port": Port["Port"][id]})
 
 
 def addship(request, id, dock):
+    id = id - 1
+    dock = dock - 1
+    with open("Data/data.json", encoding='utf-8') as read_file_json:
+        data = json.load(read_file_json)
+    Port = data
+    Dock = Port["Port"][id]["Docks"][dock]
     if request.POST:
-        id = id - 1
-        dock = dock - 1
-        with open("Data/data.json", encoding='utf-8') as read_file_json:
-            data = json.load(read_file_json)
-        Port = data
         req = request.POST
         checkName = req.get("Name")
         checkType = req.get("Type")
         checkCharacteristic = req.get("Characteristic")
         checkTime = req.get("Time")
+        checkTimeArrive = req.get("TimeArrive")
         ID = len(Port["Port"][id]["Docks"][dock]["Ships"]) + 1
         newship = {
-                "ID": ID,
-                "Name": checkName,
-                "Type": checkType,
-                "Work": True,
-                "Characteristic": checkCharacteristic,
-                "Time": checkTime
-            }
+            "ID": ID,
+            "Name": checkName,
+            "Type": checkType,
+            "Work": True,
+            "Characteristic": checkCharacteristic,
+            "Time": checkTime,
+            "TimeArrive": checkTimeArrive
+        }
         data["Port"][id]["Docks"][dock]["Ships"].append(newship)
         with open('Data/data.json', 'w', encoding='utf-8') as read_file_json:
             read_file_json.write(json.dumps(data, ensure_ascii=False, separators=(',', ': '), indent=2))
 
-    return render(request, "addship.html", {})
-
+    return render(request, "addship.html", {"Port": Port["Port"][id], "Dock": Dock})
 
 
 def logout(request):

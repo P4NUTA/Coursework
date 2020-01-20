@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Добавить работника</title>
-	<link href="/static/Styles/styleform.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'Styles/styleform.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
-<img class="image" src="/static/porthub_menu.png">
-<img class="image1" src="/static/port_icon.png">
+    <img class="image" src="{% static 'porthub_menu.png' %}">
+    <img class="image1" src="{% static 'port_icon.png' %}">
 </header>
 <fieldset>
-<legend>Добавление нового работника</legend>
-<form action="" method="POST">
-    {% csrf_token %}
-    <p><label for="id_FIO">ФИО :</label> <input type="text" name="FIO" maxlength="100" required="" id="id_FIO"></p>
-    <p><label for="id_Role">Должность :</label> <input type="text" name="Role" maxlength="100" required="" id="id_Role"></p>
-    <p><label for="id_Salary">Зарплата :</label> <input type="text" name="Salary" maxlength="100" required="" id="id_Salary"></p>
-    <br><input type="submit" value="Создать"/></br>
+    <legend>Добавление нового работника</legend>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p><label for="id_FIO">ФИО :</label> <input type="text" name="FIO" maxlength="100" required="" id="id_FIO"></p>
+        <p><label for="id_Role">Должность :</label> <input type="text" name="Role" maxlength="100" required=""
+                                                           id="id_Role"></p>
+        <p><label for="id_Salary">Зарплата :</label> <input type="text" name="Salary" maxlength="100" required=""
+                                                            id="id_Salary"></p>
+        <br><input type="submit" value="Создать"/></br>
     </form>
+    <a href="{% url 'portinfo' Port.ID %}"><input type="submit" value="Назад"></input></a>
+</fieldset>
 </body>
 </html>
