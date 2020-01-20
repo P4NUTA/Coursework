@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import re_path
 
 from . import views
 
@@ -36,4 +37,5 @@ urlpatterns = [
     path(r'portlist/<int:id>/<int:dock>/', views.dockinfo, name="dockinfo"),
     path(r'portlist/<int:id>/addworker', views.addworker, name="addworker"),
     path(r'portlist/<int:id>/<int:dock>/addship', views.addship, name="addship"),
+    re_path(r'$', views.handler404)
 ]
